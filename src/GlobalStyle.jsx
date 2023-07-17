@@ -11,11 +11,34 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;    
   }
  
+  h1,
+  h2,  
+  p,
+  ul,
+  ol,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
   ul {
     list-style: none;
   }
+
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+a {
+    text-decoration: none;
+  }
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+
 `;
