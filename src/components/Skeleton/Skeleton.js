@@ -10,6 +10,24 @@ const Skeleton = ({ ...props }) => {
   const rectSpacingY = 375; //Vertical spacing between rectangles
   const rectanglesCount = rowCount * columnCount;
 
+  const generateRectangles = () =>
+    Array.from({ length: rectanglesCount }, (_, index) => {
+      const x = (index % columnCount) * rectSpacingX + 20;
+      const y = Math.floor(index / columnCount) * rectSpacingY + 20;
+
+      return (
+        <rect
+          key={index}
+          x={x}
+          y={y}
+          rx={0}
+          ry={0}
+          width={rectWidth}
+          height={rectHeight}
+        />
+      );
+    });
+
   return (
     <ContentLoader
       speed={2}
