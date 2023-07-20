@@ -10,3 +10,5 @@ const Skeleton = ({ ...props }) => {
   const rectSpacingY = 375; //Vertical spacing between rectangles
   const rectanglesCount = rowCount * columnCount;
 };
+
+export default Skeleton;
