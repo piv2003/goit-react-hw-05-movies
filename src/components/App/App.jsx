@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import NotFound from '../../pages/NotFound';
+import SharedLayout from '../SharedLayout/SharedLayout';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const TOKEN =
