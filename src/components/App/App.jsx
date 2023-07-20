@@ -35,3 +35,22 @@ export const App = () => {
     </div>
   );
 };
+
+export async function getTrendingMovies() {
+  const typeRequest = {
+    trends: 'trending/movie/week',
+  };
+  const options = {
+    params: {
+      language: 'en-US',
+      include_adult: false,
+    },
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+  };
+  const url = `${BASE_URL}${typeRequest.trends}`;
+  const response = await axios.get(url, options);
+  return response.data.results;
+}
