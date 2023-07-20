@@ -75,3 +75,26 @@ export async function getSearchMovie(searchQuery = '') {
 
   return response.data.results;
 }
+
+export async function getMovieDetails(movieId, type = 'details') {
+  const typeRequestById = {
+    details: `movie/${movieId}`,
+    credits: `movie/${movieId}/credits`,
+    reviews: `movie/${movieId}/reviews`,
+    videos: `movie/${movieId}/videos`,
+  };
+  const options = {
+    params: {
+      language: 'en-US',
+      include_adult: false,
+    },
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+  };
+  const url = `${BASE_URL}${typeRequestById[type]}`;
+  const response = await axios.get(url, options);
+
+  return response.data;
+}
