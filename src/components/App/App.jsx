@@ -54,3 +54,24 @@ export async function getTrendingMovies() {
   const response = await axios.get(url, options);
   return response.data.results;
 }
+
+export async function getSearchMovie(searchQuery = '') {
+  const typeRequest = {
+    search: 'search/movie',
+  };
+  const options = {
+    params: {
+      query: searchQuery,
+      language: 'en-US',
+      include_adult: false,
+    },
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+  };
+  const url = `${BASE_URL}${typeRequest.search}`;
+  const response = await axios.get(url, options);
+
+  return response.data.results;
+}
