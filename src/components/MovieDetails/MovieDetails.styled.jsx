@@ -11,3 +11,16 @@ export const MovieInfo = styled.div`
   display: flex;
   gap: 15px;
 `;
+export const MovieDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: solid 3px #8404ac;
+  border-radius: 30px;
+  padding: 10px;
+
+  & ul {
+    display: flex;
+    gap: 15px;
+  }
+`;
