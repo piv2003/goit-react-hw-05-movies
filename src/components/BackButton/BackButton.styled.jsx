@@ -17,3 +17,15 @@ export const StyledLink = styled(Link)`
     transform: translateY(0);
   }
 `;
+
+export const Wrapper = styled.span`
+  display: flex;
+  align-items: center;
+  border: 2px solid #1c5c03;
+  border-radius: 7px;
+  padding: 5px 10px;
+  background: #baf0bc;
+  color: #1e035c;
+  transform: translateY(-0.2em);
+  transition: transform 0.2s ease;
+`;
