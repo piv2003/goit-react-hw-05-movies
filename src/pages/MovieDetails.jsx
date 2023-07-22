@@ -8,3 +8,7 @@ import {
   MovieInfo,
   MovieDescription,
 } from '../components/MovieDetails/MovieDetails.styled';
+
+ const MovieDetails = () => {
+  const { movieId } = useParams();
+  const [movieDetails, setMovieDetails] = useState(null);
