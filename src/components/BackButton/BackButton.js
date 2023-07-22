@@ -6,6 +6,7 @@ const BackButton = ({ to, children }) => {
     <StyledLink to={to}>
       <Wrapper>
         <HiOutlineChevronDoubleLeft size="24" />
+        {children}
       </Wrapper>
     </StyledLink>
   );
