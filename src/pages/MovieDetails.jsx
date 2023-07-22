@@ -9,8 +9,11 @@ import {
   MovieDescription,
 } from '../components/MovieDetails/MovieDetails.styled';
 
- const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
-    const [movieDetails, setMovieDetails] = useState(null);
-    const backButtonHref = useRef(location.state?.from ?? '/movies');  
-     const location = useLocation();
+  const [movieDetails, setMovieDetails] = useState(null);
+  const backButtonHref = useRef(location.state?.from ?? '/movies');
+  const location = useLocation();
+};
+
+export default MovieDetails;
