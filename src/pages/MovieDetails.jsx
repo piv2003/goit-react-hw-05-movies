@@ -11,4 +11,6 @@ import {
 
  const MovieDetails = () => {
   const { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
+    const [movieDetails, setMovieDetails] = useState(null);
+    const backButtonHref = useRef(location.state?.from ?? '/movies');  
+     const location = useLocation();
