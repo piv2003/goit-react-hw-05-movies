@@ -6,3 +6,28 @@ import {
   SearchButton,
   SearchbarInput,
 } from './SearchBar.styled';
+
+const SearchBar = ({ onSubmit }) => {
+  return (
+    <SearchBox>
+      <SearchForm onSubmit={onSubmit}>
+        <SearchButton>
+          <GoSearch />
+        </SearchButton>
+        <SearchbarInput
+          type="text"
+          name="name"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movies, please enter your request"
+        />
+      </SearchForm>
+    </SearchBox>
+  );
+};
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default SearchBar;
