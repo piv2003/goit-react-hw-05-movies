@@ -24,3 +24,23 @@ export const MovieDescription = styled.div`
     gap: 15px;
   }
 `;
+
+export const StyledLink = styled(NavLink)`
+  display: inline-flex;
+  padding: 8px 0;
+  color: black;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: #e3f79a;
+  border: solid 1px #f00707;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  &:hover {
+    color: red;
+    transform: scale(1.03);
+    box-shadow: 0 1px 4px #0000004d, -23px 0 20px -23px #000c,
+      23px 0 20px -23px #000c, inset 0 0 40px #0000001a;
+  }
+`;
