@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../App/App';
 import { List } from './Cast.styled';
-import ScrollToTopButton from '../';
+import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
 
 const Cast = () => {
   const { movieId } = useParams();
