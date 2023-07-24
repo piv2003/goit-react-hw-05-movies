@@ -17,7 +17,7 @@ export const ScrollButton = styled.div`
   transition: background 0.5s ease, transform 0.5s ease;
 
   &:hover {
-    background: radial-gradient(circle, #ffa9a1, #ff98a0);
+    background: radial-gradient(circle, #ffa9a1, #af0292);
     transform: scale(1.1);
   }
 

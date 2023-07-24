@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 const Notification = styled.b`
-  font-size: 15px;
+  font-size: 18px;
   width: 23%;
   color: red;
   text-shadow: 2px 2px 0px #3f2121, 5px 4px 0px rgb(230, 50, 191);
   margin-top: 20px;
   padding-left: 7px;
+  padding-right: 7px;
 
   @-webkit-keyframes pulsate {
     50% {
