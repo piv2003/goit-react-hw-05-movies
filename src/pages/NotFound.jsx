@@ -1,11 +1,4 @@
-import styled from 'styled-components';
-
-const Notification = styled.b`
-  display: block;
-  margin: 20px auto 0;
-  font-size: 20px;
-  width: 200px;
-`;
+import Notification from '../components/Notification/Notification.styled';
 
 const NotFound = () => {
   return <Notification>File not found</Notification>;
