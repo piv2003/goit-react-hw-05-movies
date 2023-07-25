@@ -41,6 +41,56 @@ const MovieDetails = () => {
     ? genres.map(({ name }) => name).join(', ')
     : 'No genres';
 
- 
+  return (
+    <Container>
+      <BackButton to={backLinkRef.current}>Go back</BackButton>
+      <MovieInfo>
+        {poster_path && (
+          <img
+            src={posterSrc}
+            alt={title}
+            width="300px"
+            height="440px"
+            style={{
+              borderRadius: '25px',
+              boxShadow: '7px 7px 4px #727171',
+            }}
+          />
+        )}
+        <MovieDescription>
+          <h2>{`${title} (${release_date.slice(0, 4)})`}</h2>
+          <p>User Score: {Math.round(vote_average) * 10}%</p>
+          <b>Overview:</b>
+          <p>{overview}</p>
+          <b>Genres:</b>
+          <p>{genresText}</p>
+
+          <h2>Additional Information</h2>
+          <ul>
+            <li>
+              <StyledLink to="cast" state={{ from: backLinkRef }}>
+                Cast
+              </StyledLink>
+            </li>
+            <li>
+              <StyledLink to="reviews" state={{ from: backLinkRef }}>
+                Reviews
+              </StyledLink>
+            </li>
+            <li>
+              <StyledLink to="trailer" state={{ from: backLinkRef }}>
+                Trailer
+              </StyledLink>
+            </li>
+          </ul>
+        </MovieDescription>
+      </MovieInfo>
+
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
+    </Container>
+  );
+};
 
 export default MovieDetails;
