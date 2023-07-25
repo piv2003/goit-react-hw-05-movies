@@ -3,9 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getSearchMovie } from '../components/App/App';
 import Notification from './NotFound';
-import MovieList from '../components/MovieList/MovieList';
-import SearchBar from '../components/SearchBar/SearchBar';
-import Skeleton from '../components/Skeleton/Skeleton';
+import MovieList from 'components/MovieList';
+import SearchBar from 'components/SearchBar';
+import Skeleton from 'components/Skeleton';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -16,50 +16,45 @@ const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchMovies() {
-      setNoResults(false);
-      if (movieName) {
-        setIsLoading(true);
-        setSearched(true);
-        try {
-          const movies = await getSearchMovie(movieName);
+    setNoResults(false);
+    if (movieName) {
+      setIsLoading(true);
+      setSearched(true);
+      getSearchMovie(movieName)
+        .then(movies => {
           setMovies(movies);
-          setNoResults(movies.length === 0);
-        } catch (error) {
-          console.log(error);
-        } finally {
+          if (movies.length === 0) {
+            setNoResults(true);
+          }
           setIsLoading(false);
-        }
-      }
+        })
+        .catch(console.log);
     }
-
-    fetchMovies();
   }, [movieName]);
 
   const handleSubmit = evt => {
     evt.preventDefault();
     const query = evt.target.name.value;
+    const nextParams = query !== '' ? { query } : {};
 
     if (query === '') {
       toast.error('Please enter your request');
-      return;
     }
 
-    setSearchParams({ query });
+    setSearchParams(nextParams);
+
     evt.target.name.value = '';
   };
 
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
-      {searched && (
-        <>
-          {noResults ? (
-            <Notification>No results found for your search query</Notification>
-          ) : (
-            <>{isLoading ? <Skeleton /> : <MovieList movies={movies} />}</>
-          )}
-        </>
+      {searched && noResults && (
+        <Notification>No results found for your search query</Notification>
+      )}
+
+      {searched && !noResults && (
+        <>{isLoading ? <Skeleton /> : <MovieList movies={movies} />}</>
       )}
     </>
   );
