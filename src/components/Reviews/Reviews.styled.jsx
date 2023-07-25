@@ -24,7 +24,7 @@ export const List = styled.ul`
 `;
 
 export const DoNotHave = styled.ul`
-  font-size: 15px;
+  font-size: 18px;
   width: 23%;
   color: red;
   text-shadow: 2px 2px 0px #3f2121, 5px 4px 0px rgb(230, 50, 191);
