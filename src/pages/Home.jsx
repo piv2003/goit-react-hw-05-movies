@@ -3,7 +3,7 @@ import MovieList from '../components/MovieList/MovieList';
 import { getTrendingMovies } from '../components/App/App';
 import Skeleton from '../components/Skeleton/Skeleton';
 import ScrollToTopButton from '../components/ScrollToTopButton/ScrollToTopButton';
-import { Title } from '../components/Home/Home.styled.jsx';
+import { Title } from '../components/Home/Home.styled';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
