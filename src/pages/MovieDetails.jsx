@@ -28,6 +28,19 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [movieId]);
 
+  if (movieDetails === null) return <h2>Loading...</h2>;
 
+  const { poster_path, title, release_date, vote_average, overview, genres } =
+    movieDetails;
+
+  const posterSrc = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : '';
+
+  const genresText = genres.length
+    ? genres.map(({ name }) => name).join(', ')
+    : 'No genres';
+
+ 
 
 export default MovieDetails;
