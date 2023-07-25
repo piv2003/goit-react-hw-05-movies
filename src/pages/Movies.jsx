@@ -14,5 +14,25 @@ const Movies = () => {
   const [noResults, setNoResults] = useState(false);
   const movieName = searchParams.get('query') ?? '';
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchMovies() {
+      setNoResults(false);
+      if (movieName) {
+        setIsLoading(true);
+        setSearched(true);
+        try {
+          const movies = await getSearchMovie(movieName);
+          setMovies(movies);
+          setNoResults(movies.length === 0);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    fetchMovies();
+  }, [movieName]);
 };
-export default Movies;
