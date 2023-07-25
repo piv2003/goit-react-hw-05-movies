@@ -12,8 +12,22 @@ import {
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const backButtonHref = useRef(location.state?.from ?? '/movies');
   const location = useLocation();
-};
+  const backLinkRef = useRef(location.state?.from ?? '/movies');
+
+  useEffect(() => {
+    const fetchMovieDetails = async () => {
+      try {
+        const details = await getMovieDetails(movieId, 'details');
+        setMovieDetails(details);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [movieId]);
+
+
 
 export default MovieDetails;
