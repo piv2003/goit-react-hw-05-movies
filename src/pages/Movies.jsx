@@ -35,4 +35,34 @@ const Movies = () => {
 
     fetchMovies();
   }, [movieName]);
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    const query = evt.target.name.value;
+
+    if (query === '') {
+      toast.error('Please enter your request');
+      return;
+    }
+
+    setSearchParams({ query });
+    evt.target.name.value = '';
+  };
+
+  return (
+    <>
+      <SearchBar onSubmit={handleSubmit} />
+      {searched && (
+        <>
+          {noResults ? (
+            <Notification>No results found for your search query</Notification>
+          ) : (
+            <>{isLoading ? <Skeleton /> : <MovieList movies={movies} />}</>
+          )}
+        </>
+      )}
+    </>
+  );
 };
+
+export default Movies;
