@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../App/App';
 import { MovieTrailerBox, Trailer } from './MovieTrailer.styled';
+import Notification from '../../pages/NotFound';
 
 const MovieTrailer = () => {
   const { movieId } = useParams();
@@ -28,7 +29,7 @@ const MovieTrailer = () => {
   }
 
   if (!trailer) {
-    return <div>No trailer available for this movie.</div>;
+    return <Notification>No trailer available for this movie.</Notification>;
   }
 
   return (
