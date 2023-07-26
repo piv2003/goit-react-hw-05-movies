@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import { ScrollButton } from './ScrollToTopButton.styled';
 
 const ScrollToTopButton = () => {
@@ -37,6 +38,10 @@ const ScrollToTopButton = () => {
       )}
     </div>
   );
+};
+
+ScrollToTopButton.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
 };
 
 export default ScrollToTopButton;
