@@ -8,6 +8,7 @@ export const Notification = styled.b`
   margin-top: 20px;
   padding-left: 7px;
   padding-right: 7px;
+  border-radius: 5px;
 
   @-webkit-keyframes pulsate {
     50% {

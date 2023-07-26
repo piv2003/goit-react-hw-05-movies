@@ -30,6 +30,7 @@ export const DoNotHave = styled.ul`
   text-shadow: 2px 2px 0px #3f2121, 5px 4px 0px rgb(230, 50, 191);
   margin-top: 20px;
   padding-left: 7px;
+  border-radius: 5px;
 
   @-webkit-keyframes pulsate {
     50% {
