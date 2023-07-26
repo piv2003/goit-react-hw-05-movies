@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../App/App';
 import { MovieTrailerBox, Trailer } from './MovieTrailer.styled';
-import Notification from '../NotFound/NotFound.styled';
+import { Notification } from '../NotFound/NotFound.styled';
 
 const MovieTrailer = () => {
   const { movieId } = useParams();

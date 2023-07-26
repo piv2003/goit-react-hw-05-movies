@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Notification = styled.b`
+export const Notification = styled.b`
   font-size: 18px;
   width: 23%;
   color: red;
