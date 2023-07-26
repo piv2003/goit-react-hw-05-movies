@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { getSearchMovie } from '../components/App/App';
 import { Notification } from '../components/NotFound/NotFound.styled';
@@ -9,10 +8,9 @@ import Skeleton from '../components/Skeleton/Skeleton';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
   const [searched, setSearched] = useState(false);
   const [noResults, setNoResults] = useState(false);
-  const movieName = searchParams.get('query') ?? '';
+  const [movieName, setMovieName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -45,13 +43,17 @@ const Movies = () => {
       return;
     }
 
-    setSearchParams({ query });
+    setMovieName(query);
     evt.target.name.value = '';
   };
 
   return (
     <>
-      <SearchBar onSubmit={handleSubmit} />
+      <SearchBar
+        value={movieName}
+        onChange={evt => setMovieName(evt.target.value)}
+        onSubmit={handleSubmit}
+      />
       {searched && (
         <>
           {noResults ? (
