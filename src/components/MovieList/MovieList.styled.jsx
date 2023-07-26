@@ -43,7 +43,6 @@ export const Item = styled.li`
         font-size: 30px;
       }
       & img {
-        width: 250px;
         margin-bottom: 5px;
         border-bottom: solid 1px black;
       }
