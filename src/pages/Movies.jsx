@@ -12,14 +12,20 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searched, setSearched] = useState(false);
   const [noResults, setNoResults] = useState(false);
-  const [movieName, setMovieName] = useState(searchParams.get('query') ?? '');
+  const [tempMovieName, setTempMovieName] = useState(
+    searchParams.get('query') ?? ''
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const movieName = searchParams.get('query') ?? '';
+    setTempMovieName(movieName);
+
     async function fetchMovies() {
       setNoResults(false);
-      if (movieName && searched) {
+      if (movieName) {
         setIsLoading(true);
+        setSearched(true);
         try {
           const movies = await getSearchMovie(movieName);
           setMovies(movies);
@@ -31,32 +37,32 @@ const Movies = () => {
         }
       }
     }
-
     fetchMovies();
-  }, [movieName, searched]);
+  }, [searchParams]);
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    const query = evt.target.name.value;
+    const query = tempMovieName;
     const nextParams = query !== '' ? { query } : {};
 
     if (query === '') {
       toast.error('Please enter your request');
-    } else {
-      setSearchParams(nextParams);
-      setMovieName(query);
-      setSearched(true);
+      return;
     }
 
-    evt.target.name.value = '';
+    setSearchParams(nextParams);
+  };
+
+  const handleInputChange = evt => {
+    setTempMovieName(evt.target.value);
   };
 
   return (
     <>
       <SearchBar
         onSubmit={handleSubmit}
-        value={movieName}
-        onChange={e => setMovieName(e.target.value)}
+        value={tempMovieName}
+        onChange={handleInputChange}
       />
       {searched && noResults && (
         <Notification>No results found for your search query</Notification>
