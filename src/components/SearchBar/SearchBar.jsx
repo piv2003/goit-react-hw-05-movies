@@ -7,7 +7,7 @@ import {
   SearchbarInput,
 } from './SearchBar.styled';
 
-const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSubmit, value, onChange }) => {
   return (
     <SearchBox>
       <SearchForm onSubmit={onSubmit}>
@@ -20,6 +20,8 @@ const SearchBar = ({ onSubmit }) => {
           autoComplete="off"
           autoFocus
           placeholder="Search movies, please enter your request"
+          value={value}
+          onChange={onChange}
         />
       </SearchForm>
     </SearchBox>
@@ -28,6 +30,8 @@ const SearchBar = ({ onSubmit }) => {
 
 SearchBar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default SearchBar;
