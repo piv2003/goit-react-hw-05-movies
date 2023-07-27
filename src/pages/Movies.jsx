@@ -18,9 +18,8 @@ const Movies = () => {
   useEffect(() => {
     async function fetchMovies() {
       setNoResults(false);
-      if (movieName) {
+      if (movieName && searched) {
         setIsLoading(true);
-        setSearched(true);
         try {
           const movies = await getSearchMovie(movieName);
           setMovies(movies);
@@ -32,8 +31,9 @@ const Movies = () => {
         }
       }
     }
+
     fetchMovies();
-  }, [movieName]);
+  }, [movieName, searched]);
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -42,9 +42,11 @@ const Movies = () => {
 
     if (query === '') {
       toast.error('Please enter your request');
+    } else {
+      setSearchParams(nextParams);
+      setMovieName(query);
+      setSearched(true);
     }
-
-    setSearchParams(nextParams);
 
     evt.target.name.value = '';
   };
