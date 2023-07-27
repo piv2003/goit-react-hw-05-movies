@@ -41,7 +41,7 @@ const ScrollToTopButton = () => {
 };
 
 ScrollToTopButton.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool,
 };
 
 export default ScrollToTopButton;
